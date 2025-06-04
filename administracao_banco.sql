@@ -25,6 +25,23 @@ GRANT select, insert, delete, update ON bd_empresa.* TO my_user1;
 
 SELECT * from mysql.user;
 
-REVOKE select, insert, delete, update ON bd_empresa.* FROM
+REVOKE select, insert, delete, update ON *.* FROM
 my_user1;
+
+use bd_empresa;
+show tables;
+use auladml;
+show tables;
+
+CREATE ROLE papelAdmin;
+CREATE ROLE papelDev;
+
+GRANT ALL ON *.* TO papelAdmin;
+GRANT SELECT, insert, update, delete ON *.* TO papelDev;
+
+CREATE USER adm IDENTIFIED BY '105710571057';
+CREATE USER dev IDENTIFIED BY '10571057991057';
+
+GRANT papelAdmin TO adm;
+GRANT papelDev TO dev;
 
